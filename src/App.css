@@ -1,0 +1,59 @@
+.table-container {
+  @apply bg-slate-50 p-2 shadow rounded-md  max-w-6xl mx-auto;
+}
+.header {
+  @apply flex justify-between items-center gap-2 px-2 mt-1 mb-3;
+}
+.header .title {
+  @apply text-2xl font-bold text-slate-700;
+}
+.responsive-table {
+  @apply overflow-x-auto w-full;
+}
+.table {
+  @apply w-full;
+}
+.table-header {
+  @apply border-b border-slate-200 w-full;
+}
+.tr {
+  @apply p-3  flex justify-between items-center w-full;
+}
+.table-header .tr {
+  @apply bg-slate-100 rounded-t-md;
+}
+.th {
+  @apply font-semibold  text-center;
+}
+.th:last-child {
+  @apply text-right;
+}
+.th:first-child {
+  @apply text-left;
+}
+.table-body {
+  @apply w-full max-h-svh overflow-y-auto;
+}
+
+.table-body .tr {
+  @apply px-3 py-2 border-b border-slate-100 transition-colors duration-300 ease-in-out hover:bg-slate-200;
+}
+.table-body .tr:last-child {
+  @apply rounded-b-md border-none;
+}
+.td {
+  @apply text-center;
+}
+.tr .td:last-child {
+  @apply text-right;
+}
+.tr .td:first-child {
+  @apply text-left;
+}
+.th,
+.td {
+  @apply w-24;
+}
+/* .tr:hover {
+  @apply bg-slate-100;
+} */
