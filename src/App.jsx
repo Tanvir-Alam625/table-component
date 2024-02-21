@@ -1,10 +1,14 @@
 import { useState } from "react";
 import "./App.css";
+import Dropdown from "./components/Dropdown";
 import Table from "./components/Table";
 import { users } from "./data/users";
 import { CiMenuKebab } from "react-icons/ci";
+import { LuSettings } from "react-icons/lu";
 
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
+
   const columns = [
     {
       title: "Name",
@@ -52,7 +56,7 @@ function App() {
       dataIndex: "action",
       render: () => (
         <div className="flex justify-end">
-          <CiMenuKebab />
+          <CiMenuKebab className="text-slate-700" />
         </div>
       ),
     },
@@ -66,6 +70,18 @@ function App() {
       <div className="table-container">
         <div className="header">
           <h2 className="title">Users List</h2>
+          <Dropdown setIsOpen={setIsOpen}>
+            <Dropdown.Trigger onClick={() => setIsOpen(!isOpen)}>
+              <LuSettings size={20} />
+            </Dropdown.Trigger>
+            <Dropdown.Content isOpen={isOpen}>
+              <ul>
+                <li>Dropdown Item 1</li>
+                <li>Dropdown Item 2</li>
+                <li>Dropdown Item 3</li>
+              </ul>
+            </Dropdown.Content>
+          </Dropdown>
         </div>
         <Table isSerially data={users} columns={columns} />
       </div>
