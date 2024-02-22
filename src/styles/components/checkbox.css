@@ -1,0 +1,3 @@
+input.checkbox {
+  @apply w-4 h-4 rounded border-slate-200;
+}

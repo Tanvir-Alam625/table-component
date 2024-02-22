@@ -1,9 +1,10 @@
+/* Dropdown Component All Styles */
 .dropdown {
   @apply relative;
 }
 
 .dropdown .content {
-  @apply absolute top-5  -right-4  px-2 py-3 bg-slate-50 border shadow-md rounded-md;
+  @apply absolute top-5  -right-4  px-2 py-3 bg-blue-50 border shadow-md rounded-md;
 }
 
 .dropdown .trigger {

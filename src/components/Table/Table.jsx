@@ -1,16 +1,13 @@
 import PropTypes from "prop-types";
 
-const Table = ({ data = [], columns = [], isSerially = false }) => {
+// Table Component
+const Table = ({ data, columns, ...props }) => {
   return (
-    <div className="responsive-table">
+    <div className="responsive-table" {...props}>
       <div className="table">
+        {/* Table Header  */}
         <div className="table-header">
           <div className="tr">
-            {isSerially ? (
-              <div className="th">
-                <span className="whitespace-nowrap">Sr. No.</span>
-              </div>
-            ) : null}
             {columns.map((column, index) => (
               <div className="th" key={index}>
                 <span className="whitespace-nowrap">{column.title}</span>
@@ -18,22 +15,16 @@ const Table = ({ data = [], columns = [], isSerially = false }) => {
             ))}
           </div>
         </div>
+        {/* Table Body */}
         <div className="table-body">
           {data.map((row, rowIndex) => (
             <div className="tr" key={rowIndex}>
-              {isSerially ? (
-                <div className="td">
-                  <span className="whitespace-nowrap">{rowIndex + 1}</span>
-                </div>
-              ) : null}
               {columns.map((column, index) => (
                 <div className="td" key={index}>
                   {column.render ? (
                     column.render(row)
                   ) : (
-                    <span className="whitespace-nowrap">
-                      {row[column.dataIndex]}
-                    </span>
+                    <span>{row[column.dataIndex]}</span>
                   )}
                 </div>
               ))}
@@ -45,6 +36,12 @@ const Table = ({ data = [], columns = [], isSerially = false }) => {
   );
 };
 
+// Default props for Table Component
+Table.defaultProps = {
+  data: [],
+  columns: [],
+};
+// Type Validation for Table Component
 Table.propTypes = {
   data: PropTypes.array.isRequired,
   columns: PropTypes.array.isRequired,
