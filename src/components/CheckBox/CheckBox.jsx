@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-// CheckBox Component
+// CheckBox component
 const CheckBox = ({ name, id, checked, onChange, className, ...props }) => {
   return (
     <input
@@ -16,14 +16,14 @@ const CheckBox = ({ name, id, checked, onChange, className, ...props }) => {
     />
   );
 };
-// Default props for CheckBox
+// Default props for checkBox
 CheckBox.defaultProps = {
   name: "checkbox",
   id: "checkbox",
   checked: false,
   className: "",
 };
-// Type Validation for CheckBox
+// Type validation for checkBox
 CheckBox.propTypes = {
   name: PropTypes.string,
   id: PropTypes.string,

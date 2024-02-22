@@ -4,8 +4,10 @@ import { CiMenuKebab } from "react-icons/ci";
 import { LuSettings } from "react-icons/lu";
 import Dropdown from "./components/Dropdown/Dropdown";
 import Table from "./components/Table/Table";
-import "./styles/App.css";
 import CheckBox from "./components/CheckBox/CheckBox";
+import "./styles/App.css";
+
+//  columns data for table
 const columnsData = [
   {
     title: "Sr. No.",
@@ -81,10 +83,10 @@ const columnsData = [
 ];
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); //  State for dropdown
+  const [columns, setColumns] = useState(columnsData); // Columns state for table
 
-  const [columns, setColumns] = useState(columnsData);
-
+  // Toggle columns function
   const toggleColumns = (index) => {
     setColumns((prevState) => {
       return prevState.map((item, idx) => {
@@ -99,6 +101,7 @@ function App() {
     });
   };
 
+  // Filter selected columns
   const availableColumns = useMemo(() => {
     return columns.filter((column) => column.show === true);
   }, [columns]);
@@ -111,6 +114,8 @@ function App() {
       <div className="table-container">
         <div className="header">
           <h2 className="title">Users List</h2>
+
+          {/* Dropdown for dynamic columns show hide */}
           <Dropdown setIsOpen={setIsOpen}>
             <Dropdown.Trigger onClick={() => setIsOpen(!isOpen)}>
               <LuSettings size={20} />
@@ -138,9 +143,12 @@ function App() {
             </Dropdown.Content>
           </Dropdown>
         </div>
+
+        {/* Table Component */}
         {availableColumns.length > 0 ? (
           <Table data={users} columns={availableColumns} />
         ) : (
+          // If no columns are selected
           <div className="text-center">No columns selected</div>
         )}
       </div>

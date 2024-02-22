@@ -1,13 +1,14 @@
 import PropTypes from "prop-types";
 
-// Table Component
+// Table component
 const Table = ({ data, columns, ...props }) => {
   return (
     <div className="responsive-table" {...props}>
       <div className="table">
-        {/* Table Header  */}
+        {/* Table header  */}
         <div className="table-header">
           <div className="tr">
+            {/* Table header for each column */}
             {columns.map((column, index) => (
               <div className="th" key={index}>
                 <span className="whitespace-nowrap">{column.title}</span>
@@ -15,15 +16,19 @@ const Table = ({ data, columns, ...props }) => {
             ))}
           </div>
         </div>
-        {/* Table Body */}
+        {/* Table body */}
         <div className="table-body">
+          {/* Table body for each row */}
           {data.map((row, rowIndex) => (
             <div className="tr" key={rowIndex}>
+              {/* Table body for each column */}
               {columns.map((column, index) => (
                 <div className="td" key={index}>
                   {column.render ? (
+                    // Render custom column
                     column.render(row)
                   ) : (
+                    // Render default column
                     <span>{row[column.dataIndex]}</span>
                   )}
                 </div>
@@ -36,12 +41,12 @@ const Table = ({ data, columns, ...props }) => {
   );
 };
 
-// Default props for Table Component
+// Default props for table component
 Table.defaultProps = {
   data: [],
   columns: [],
 };
-// Type Validation for Table Component
+// Type validation for table component
 Table.propTypes = {
   data: PropTypes.array.isRequired,
   columns: PropTypes.array.isRequired,
